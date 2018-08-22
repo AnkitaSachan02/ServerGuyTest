@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import { Apicaller } from "../util/apicaller";
-import "../../src/App.css";
+import "../App.css";
 import config from "../config/config";
-// import { set } from "lodash";
-// import { Router, Route} from 'react-router-dom';
-// import SignUp from './components/signup';
-// import { createBrowserHistory } from 'history';
+import { set } from "lodash";
 
-// var hist = createBrowserHistory();
-
-class GitRepository extends Component {
+class GitRepositories extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,14 +64,12 @@ class GitRepository extends Component {
   };
   render() {
     return (
-      
-          <div className="App">
-      <form
-        onSubmit={e => {
-          this.searchData(e);
-        }}
-      >
-        <div>
+      <div className="App">
+        <form
+          onSubmit={e => {
+            this.searchData(e);
+          }}
+        >
           <input
             type="text"
             value={this.state.topic}
@@ -84,15 +77,14 @@ class GitRepository extends Component {
               this.typeSearch(e);
             }}
           />
-         <input type="submit" defaultValue={"Submit"} />
+          <input type="submit" defaultValue={"Submit"} />
+        </form>
+        <div className="listSet" style={this.state.viewSet}>
+          <div className="linkSet">{this.state.list}</div>
         </div>
-      </form>
-    <div className="listSet" style={this.state.viewSet}>
-      <div className="linkSet">{this.state.list}</div>
-    </div>
-          </div>
+      </div>
     );
   }
 }
 
-export default GitRepository;
+export default GitRepositories;
