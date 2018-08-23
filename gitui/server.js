@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/googleAuth", authRouter);
+app.use("/auth", authRouter);
 app.use("/git", gitRouter);
 
 app.listen(8081, () => {

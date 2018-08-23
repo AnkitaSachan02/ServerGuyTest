@@ -13,7 +13,7 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(new googleStrategy({
-	callbackURL:'googleAuth/redirect', 
+	callbackURL:'auth/redirect',
 	clientID: "195195470406-mos65gc39rlktc8oj17553bpug6ff258.apps.googleusercontent.com",
 	clientSecret: "DddUrblhv1hbcJNDwiQl2Ius", 
 }, async function(accessToekn, refreshToken, profile, done){
@@ -28,7 +28,7 @@ passport.use(new googleStrategy({
 }))
 
 passport.use(new facebookStrategy({
-	callbackURL:'googleAuth/fredirect', 
+	callbackURL:'auth/fredirect',
 	clientID: "542899819495663",
 	clientSecret: "2951dbc2d13c4e0e2ac6e34b8c487e05", 
 }, async function(accessToekn, refreshToken, profile, done){

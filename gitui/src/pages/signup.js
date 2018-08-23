@@ -29,11 +29,11 @@ class SignUp extends Component {
                     </div>
                     <div class="right">
                         <span class="loginwith">Sign in with<br />social network</span>
-                        <a href="http://localhost:8081/googleAuth/facebook">
+                        <a href="http://localhost:8081/auth/facebook">
                             <button class="social-signin facebook">Log in with facebook</button>
                         </a>
                         <button class="social-signin twitter">Log in with Twitter</button>
-                        <a href="http://localhost:8081/googleAuth/google">
+                        <a href="http://localhost:8081/auth/google">
                             <button class="social-signin google">Log in with Google+</button>
                         </a>
                     </div>

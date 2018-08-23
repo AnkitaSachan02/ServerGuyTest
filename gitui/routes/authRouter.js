@@ -15,7 +15,7 @@ router.get("/redirect", passport.authenticate("google"), (req, res) => {
 
 router.get( "/facebook", passport.authenticate("facebook"));
 
-router.get("/redirect", passport.authenticate("facebook"), (req, res) => {
+router.get("/fredirect", passport.authenticate("facebook"), (req, res) => {
 	console.log("called>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   res.redirect(`http://localhost:3000/signup/`);
 });
