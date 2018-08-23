@@ -29,9 +29,13 @@ class SignUp extends Component {
                     </div>
                     <div class="right">
                         <span class="loginwith">Sign in with<br />social network</span>
-                        <button class="social-signin facebook">Log in with facebook</button>
+                        <a href="http://localhost:8081/googleAuth/facebook">
+                            <button class="social-signin facebook">Log in with facebook</button>
+                        </a>
                         <button class="social-signin twitter">Log in with Twitter</button>
-                        <button class="social-signin google">Log in with Google+</button>
+                        <a href="http://localhost:8081/googleAuth/google">
+                            <button class="social-signin google">Log in with Google+</button>
+                        </a>
                     </div>
                     <div class="or">OR</div>
                 </div>
