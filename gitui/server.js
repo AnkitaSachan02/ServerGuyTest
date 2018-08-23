@@ -6,12 +6,13 @@ var app = express();
 let passport = require("passport");
 let authRouter = require("./routes/authRouter");
 let passportSetup = require("./passportSetup");
+
+app.use(cors());
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use("/auth", authRouter);
 app.use("/git", gitRouter);
 

@@ -8,15 +8,19 @@ router.get(
   })
 );
 
-router.get("/redirect", passport.authenticate("google"), (req, res) => {
-	console.log("called>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+router.get("/redirect", passport.authenticate("google",{
+    session: false
+}), (req, res) => {
+  console.log("called>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   res.redirect(`http://localhost:3000/signup/`);
 });
 
 router.get( "/facebook", passport.authenticate("facebook"));
 
-router.get("/fredirect", passport.authenticate("facebook"), (req, res) => {
-	console.log("called>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+router.get("/fredirect", passport.authenticate("facebook",{
+    session: false
+}), (req, res) => {
+  console.log("called>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   res.redirect(`http://localhost:3000/signup/`);
 });
 

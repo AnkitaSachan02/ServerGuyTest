@@ -5,12 +5,12 @@ let facebookStrategy = require("passport-facebook");
 passport.serializeUser((user, done) => {
 	console.log("in serializeUser", user);
 	done(null, user._id);
-})
+});
 
 passport.deserializeUser((id, done) => {
 	console.log("in deserializeUser", id);
 	done(null, id);
-})
+});
 
 passport.use(new googleStrategy({
 	callbackURL:'auth/redirect',
@@ -18,13 +18,18 @@ passport.use(new googleStrategy({
 	clientSecret: "DddUrblhv1hbcJNDwiQl2Ius", 
 }, async function(accessToekn, refreshToken, profile, done){
 	console.log("this is profile", profile);
-		try{
-			console.log("in try block of callback");
-			done(null, "");
-		}catch(error){
-			console.log("in catch block of callback");
-			done(null, "");
-		}
+    const user = {
+        'firstName' : profile.name.givenName,
+        'lastName'    : profile.name.familyName,
+        'id'              : profile.id,
+    }
+    try{
+        console.log("in try block of callback");
+        done(null, user);
+    }catch(error){
+        console.log("in catch block of callback");
+        done(error, null);
+    }
 }))
 
 passport.use(new facebookStrategy({
@@ -33,11 +38,16 @@ passport.use(new facebookStrategy({
 	clientSecret: "2951dbc2d13c4e0e2ac6e34b8c487e05", 
 }, async function(accessToekn, refreshToken, profile, done){
 	console.log("this is profile", profile);
-		try{
-			console.log("in try block of callback");
-			done(null, "");
-		}catch(error){
-			console.log("in catch block of callback");
-			done(null, "");
-		}
+    const user = {
+        'firstName' : profile.name.givenName,
+        'lastName' : profile.name.familyName,
+        'id ': profile.id,
+    }
+    try{
+        console.log("in try block of callback");
+        done(null, user);
+    }catch(error){
+        console.log("in catch block of callback");
+        done(error, null);
+    }
 }))
