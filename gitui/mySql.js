@@ -1,16 +1,16 @@
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "hrhk1234"
+var connection = mysql.createConnection({
+  host: "sql12.freemysqlhosting.net",
+  user: "sql12253212",
+  password: "7eQG1tfLvp",
+  database: "sql12253212"
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  con.query("CREATE DATABASE mydb", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-  });
+connection.connect(err =>{
+  if(!!err){
+    console.log("database connection error: ",err);
+  } else {
+    console.log("database connected...!");
+  }
 });

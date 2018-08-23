@@ -6,7 +6,7 @@ var app = express();
 let passport = require("passport");
 let authRouter = require("./routes/authRouter");
 let passportSetup = require("./passportSetup");
-
+let database = require("./mySql");
 app.use(cors());
 
 app.use(passport.initialize());
