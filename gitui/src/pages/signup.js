@@ -19,7 +19,7 @@ class SignUp extends Component {
     render(){
         return(
             <div>
-                <div id="login-box">
+                <div id="login-box" style={{width: "340px"}}>
                     <div class="left">
                         <h1>Sign up</h1>
                         <input onChange={this.onChange} type="text" name="username" placeholder="Username" />
@@ -27,17 +27,6 @@ class SignUp extends Component {
                         <input onChange={this.onChange} type="password" name="password" placeholder="Password" />
                         <input onChange={this.onChange} type="submit" name="signup_submit" value="Sign me up" />
                     </div>
-                    <div class="right">
-                        <span class="loginwith">Sign in with<br />social network</span>
-                        <a href="http://localhost:8081/auth/facebook">
-                            <button class="social-signin facebook">Log in with facebook</button>
-                        </a>
-                        <button class="social-signin twitter">Log in with Twitter</button>
-                        <a href="http://localhost:8081/auth/google">
-                            <button class="social-signin google">Log in with Google+</button>
-                        </a>
-                    </div>
-                    <div class="or">OR</div>
                 </div>
             </div>
         );
