@@ -67,6 +67,10 @@ h1 {
   font-size: 28px;
 }
 
+#git-search-box{
+  display : inline;
+}
+
 input[type="text"],
 input[type="password"] {
   display: block;

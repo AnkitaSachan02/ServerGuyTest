@@ -80,6 +80,7 @@ class GitRepositories extends Component {
         >
           <input
             type="text"
+            id="git-search-box"
             value={this.state.topic}
             onChange={e => {
               this.typeSearch(e);
