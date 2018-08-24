@@ -6,9 +6,16 @@ var app = express();
 let passport = require("passport");
 let authRouter = require("./routes/authRouter");
 let passportSetup = require("./passportSetup");
-let database = require("./mySql");
+let connection = require("./mySql");
 app.use(cors());
 
+connection.connect(err =>{
+    if(!!err){
+        console.log("database connection error: ",err);
+    } else {
+        console.log("database connected...!");
+    }
+});
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());

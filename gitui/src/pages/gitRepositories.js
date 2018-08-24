@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Apicaller } from "../util/apicaller";
 import "../App.css";
 import config from "../config/config";
-import { set } from "lodash";
 
 class GitRepositories extends Component {
   constructor(props) {
@@ -15,6 +14,15 @@ class GitRepositories extends Component {
         overflow: "auto"
       }
     };
+  }
+
+  componentWillMount(){
+      let email = localStorage.getItem("username") || this.props.match.params.email;
+      if(!email){
+          localStorage.setItem("username", email);
+      } else if(!email) {
+          this.props.history.push("/");
+      }
   }
 
   typeSearch = e => {

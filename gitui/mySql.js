@@ -7,10 +7,4 @@ var connection = mysql.createConnection({
   database: "sql12253212"
 });
 
-connection.connect(err =>{
-  if(!!err){
-    console.log("database connection error: ",err);
-  } else {
-    console.log("database connected...!");
-  }
-});
+module.exports = connection;

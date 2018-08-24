@@ -1,6 +1,7 @@
 let passport = require("passport");
 let googleStrategy = require("passport-google-oauth20");
 let facebookStrategy = require("passport-facebook");
+let connection = require("./mySql");
 
 passport.serializeUser((user, done) => {
 	console.log("in serializeUser", user);
@@ -17,17 +18,26 @@ passport.use(new googleStrategy({
 	clientID: "195195470406-mos65gc39rlktc8oj17553bpug6ff258.apps.googleusercontent.com",
 	clientSecret: "DddUrblhv1hbcJNDwiQl2Ius", 
 }, async function(accessToekn, refreshToken, profile, done){
-	console.log("this is profile", profile);
-    const user = {
-        'firstName' : profile.name.givenName,
-        'lastName'    : profile.name.familyName,
-        'id'              : profile.id,
-    }
     try{
-        console.log("in try block of callback");
-        done(null, user);
+        let { emails, id } = profile;
+        let email = emails[0];
+        email = email.value;
+        let query = `select * from user where email="${email}"`;
+        await connection.query(query,async function (error, rows, fields) {
+            if (error) throw error;
+            if( !rows || !rows.length ){
+                let q = `INSERT INTO user (username, email, password ) VALUES ("${id}", "${email}", "${id}")`;
+                await connection.query(q, function (err, result) {
+                    if (err) throw err;
+                })
+            }
+            let user= {
+                id,
+                email
+            };
+            done(null, user);
+        })
     }catch(error){
-        console.log("in catch block of callback");
         done(error, null);
     }
 }))
@@ -37,17 +47,11 @@ passport.use(new facebookStrategy({
 	clientID: "542899819495663",
 	clientSecret: "2951dbc2d13c4e0e2ac6e34b8c487e05", 
 }, async function(accessToekn, refreshToken, profile, done){
-	console.log("this is profile", profile);
-    const user = {
-        'firstName' : profile.name.givenName,
-        'lastName' : profile.name.familyName,
-        'id ': profile.id,
-    }
+	console.log("this is profile", JSON.stringify(profile));
     try{
-        console.log("in try block of callback");
+        let user = {}
         done(null, user);
     }catch(error){
-        console.log("in catch block of callback");
         done(error, null);
     }
 }))
